@@ -1,5 +1,6 @@
 import json
 from WalText2.renderers import *
+from tkinter import BUTT, ROUND, PROJECTING
 
 
 def lexcom(com):
@@ -23,19 +24,24 @@ def drawchar(canvas, commands, x, y, color='black'):
         ins = com[0]
         args = com[1:]
         if ins == 'line':
-            canvas.create_line(x+args[0], y-args[1], x+args[2], y-args[3], fill=color, width=size)
+            canvas.create_line(x+args[0], y-args[1], x+args[2], y-args[3],
+                               fill=color, width=size, cap=PROJECTING)
 
         elif ins == 'circle':
-            draw_circle(canvas, x+args[0], y-args[1], args[2], fill=color, width=size)
+            draw_circle(canvas, x+args[0], y-args[1], args[2],
+                        fill=color, width=size, cap=PROJECTING)
 
         elif ins == 'arc':
-            draw_arc(canvas, x+args[0], y-args[1], args[2], args[2], args[3], args[4], 0, fill=color, width=size)
+            draw_arc(canvas, x+args[0], y-args[1], args[2], args[2], args[3], args[4], 0,
+                     fill=color, width=size, cap=PROJECTING)
 
         elif ins == 'ellipse':
-            draw_ellipse(canvas, x+args[0], y-args[1], args[2], args[3], 0, fill=color, width=size)
+            draw_ellipse(canvas, x+args[0], y-args[1], args[2], args[3], args[4],
+                         fill=color, width=size, cap=PROJECTING)
 
         elif ins == 'ellarc':
-            draw_arc(canvas, x+args[0], y-args[1], args[2], args[3], args[4], args[5], args[6], fill=color, width=size)
+            draw_arc(canvas, x+args[0], y-args[1], args[2], args[3], args[4], args[5], args[6], fill=color, width=size,
+                     cap=PROJECTING)
 
         elif ins == 'size':
             size = args[0]

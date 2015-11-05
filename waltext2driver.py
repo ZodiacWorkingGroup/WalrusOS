@@ -7,8 +7,8 @@ class C(tk.Canvas):
     def __init__(self, *args, **kwargs):
         tk.Canvas.__init__(self, *args, **kwargs)
         font = '''{
-        "a": [["circle 15 15 15", "line 30 30 30 0"],
-        {"width":30}]
+        "a": [["ellipse 12 15 12 15 0", "line 24 30 24 0"],
+        {"width":24}]
         }'''
         main.render_text(self, 'aa', main.loadfont(font), 50)
 
