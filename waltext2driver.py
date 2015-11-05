@@ -10,7 +10,7 @@ class C(tk.Canvas):
         "a": [["circle 15 15 15", "line 30 30 30 0"],
         {"width":30}]
         }'''
-        main.render_text(self, 'a', main.loadfont(font), 50)
+        main.render_text(self, 'aa', main.loadfont(font), 50)
 
 
 top = tk.Tk()

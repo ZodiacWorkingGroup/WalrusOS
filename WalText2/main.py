@@ -41,11 +41,12 @@ def drawchar(canvas, commands, x, y, color='black'):
             size = args[0]
 
 
-def render_text(canvas, text, font_family, line_base, color='black'):
+def render_text(canvas, text, font_family, line_base, color='black', charsep=10):
     xpos = 50
     for char in text:
-        drawchar(canvas, font_family[char][0], line_base, xpos, color)
+        drawchar(canvas, font_family[char][0], xpos, line_base, color)
         xpos += font_family[char][1]['width']
+        xpos += charsep
 
 
 def loadfont(text):
