@@ -19,7 +19,7 @@ def between(deg, s, e):  # Not the issue'
         return deg >= s or deg <= e
 
 
-def draw_arc(canvas, x, y, r1, r2, s, e, theta, res=1, **kwargs):  # The issue
+def draw_arc(canvas, x, y, r1, r2, s, e, theta, res=1, scalar=1, **kwargs):  # The issue
     points = [[]]
     res *= 20
 
@@ -37,12 +37,12 @@ def draw_arc(canvas, x, y, r1, r2, s, e, theta, res=1, **kwargs):  # The issue
 
     for seg in points:
         for ln in seg:
-            canvas.create_line(ln[0]['x'], ln[0]['y'], ln[1]['x'], ln[1]['y'], **kwargs)
+            canvas.create_line(ln[0]['x']*scalar, ln[0]['y']*scalar, ln[1]['x']*scalar, ln[1]['y']*scalar, **kwargs)
 
 
-def draw_ellipse(canvas, x, y, r1, r2, theta, res=1, **kwargs):
-    draw_arc(canvas, x, y, r1, r2, 0, 360, theta, res, **kwargs)
+def draw_ellipse(canvas, x, y, r1, r2, theta, res=1, scalar=1, **kwargs):
+    draw_arc(canvas, x, y, r1, r2, 0, 360, theta, res, scalar, **kwargs)
 
 
-def draw_circle(canvas, x, y, r, res=1, **kwargs):
-    draw_ellipse(canvas, x, y, r, r, 0, res, **kwargs)
+def draw_circle(canvas, x, y, r, res=1, scalar=1, **kwargs):
+    draw_ellipse(canvas, x, y, r, r, 0, res, scalar, **kwargs)
