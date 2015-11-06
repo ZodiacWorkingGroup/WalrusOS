@@ -2,3 +2,7 @@ abcdefghijklmnopqrstuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 0123456789
 !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+←↑→↓↔↕↖↗↘↙↚↛↜↝↞↟↠↡
+■■■■■
+The quick brown fox jumps over the lazy dog.
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG!

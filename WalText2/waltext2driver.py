@@ -1,21 +1,27 @@
 import tkinter as tk
+from tkinter.filedialog import askopenfilename
 from tkinter import N, E, S, W, BOTH, ALL
 
 from WalText2 import main
 
+import codecs
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), sys.stdout.encoding, 'replace')  # Unicode support (for ? character)
+
 
 class C(tk.Canvas):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, w, h, *args, **kwargs):
         tk.Canvas.__init__(self, *args, **kwargs)
-        self.config(background="#AAAAAA", width=800, height=500)
-        self.fontfile = input('font file: ')
+        self.config(background="#AAAAAA", width=w, height=h)
+        self.fontfile = askopenfilename(title='Select a font file')
         self.bind('<Button-1>', self.draw)
         self.draw()
 
     def draw(self, event=None):
         self.delete(ALL)
         font = open(self.fontfile).read()
-        text = open('testtext.txt').readlines()
+        text = [line.strip() for line in codecs.open('testtext.txt', 'r', 'utf-8').readlines()]
 
         baseline = 40
         for ln in text:
@@ -25,7 +31,8 @@ class C(tk.Canvas):
 
 top = tk.Tk()
 top.wm_state('zoomed')
-c = C(top)
+top.update()
+c = C(top.winfo_width(), top.winfo_height(), top)
 
 c.grid(sticky=N+E+S+W)
 
