@@ -24,6 +24,7 @@ class Main(Tk):
         self.mb.add_cascade(label='Character', menu=self.cm)
 
         self.charlabel = Label(text='a')
+        self.charinput = Entry()
 
         self.st = ScrolledText()
 
@@ -53,17 +54,30 @@ class Main(Tk):
                                    {'width: ': float(self.widthe.get())}]
 
     def switchchar(self):
-        self.curchar = input('New char: ')
-        self.charlabel.config(text=self.curchar)
+        self.charlabel.destroy()
+        self.charinput.grid(row=1, column=0)
+        self.charinput.insert(0, self.curchar)
+        self.charinput.bind('<Return>', self.switchcharfinish)
+
+    def switchcharfinish(self, event=None):
+        self.curchar = self.charinput.get()
+        self.charinput.destroy()
+        self.charlabel = Label(text=self.curchar)
+        self.charlabel.grid(row=1, column=0)
+        self.charinput = Entry()
         self.updatest()
 
     def updatest(self):
         self.st.delete(1.0, END)
-        for line in self.font[self.curchar][0]:
-            self.st.insert(END, line)
-            self.st.insert(END, '\n')
-        self.widthe.delete(0, END)
-        self.widthe.insert(0, self.font[self.curchar][1]['width'])
+        if self.curchar in self.font:
+            for line in self.font[self.curchar][0]:
+                self.st.insert(END, line)
+                self.st.insert(END, '\n')
+            self.widthe.delete(0, END)
+            self.widthe.insert(0, self.font[self.curchar][1]['width'])
+        else:
+            self.widthe.delete(0, END)
+            self.widthe.insert(0, '0')
 
 
 inp = ''
