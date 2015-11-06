@@ -11,20 +11,18 @@ class C(tk.Canvas):
         tk.Canvas.__init__(self, *args, **kwargs)
         self.config(background="#AAAAAA", width=800, height=500)
         self.fontfile = input('font file: ')
-        print(ascii_lowercase)
-        print(ascii_uppercase)
-        print(digits)
-        print(punctuation)
         self.bind('<Button-1>', self.draw)
         self.draw()
 
     def draw(self, event=None):
         self.delete(ALL)
         font = open(self.fontfile).read()
-        main.render_text(self, ascii_lowercase, main.loadfont(font), 40)
-        main.render_text(self, ascii_uppercase, main.loadfont(font), 100)
-        main.render_text(self, digits, main.loadfont(font), 160)
-        main.render_text(self, punctuation, main.loadfont(font), 220)
+        text = open('testtext.txt').readlines()
+
+        baseline = 40
+        for ln in text:
+            main.render_text(self, ln, main.loadfont(font), baseline)
+            baseline += 60
 
 
 top = tk.Tk()
