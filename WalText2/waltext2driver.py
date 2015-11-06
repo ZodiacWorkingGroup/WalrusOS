@@ -3,8 +3,6 @@ from tkinter import N, E, S, W, BOTH, ALL
 
 from WalText2 import main
 
-from string import ascii_lowercase, ascii_uppercase, digits, punctuation
-
 
 class C(tk.Canvas):
     def __init__(self, *args, **kwargs):
@@ -21,7 +19,7 @@ class C(tk.Canvas):
 
         baseline = 40
         for ln in text:
-            main.render_text(self, ln, main.loadfont(font), baseline)
+            main.create_text(self, ln, main.loadfont(font), baseline)
             baseline += 60
 
 

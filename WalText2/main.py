@@ -17,7 +17,7 @@ def lexcom(com):
 size = 1
 
 
-def drawchar(canvas, commands, x, y, color='black', scalar=1, font_weight=0):
+def createchar(canvas, commands, x, y, color='black', scalar=1, font_weight=0):
     global size
     for com in commands:
         com = lexcom(com)
@@ -47,19 +47,18 @@ def drawchar(canvas, commands, x, y, color='black', scalar=1, font_weight=0):
             size = args[0]+font_weight
 
 
-def render_text(canvas, text, font_family, line_base, color='black', charsep=10, scalar=1, font_weight=0):
+def create_text(canvas, text, font_family, line_base, color='black', charsep=10, scalar=1, font_weight=0):
     xpos = 20
     for char in text:
         global size
         size = 1+font_weight
         if font_family.get(char):
-            drawchar(canvas, font_family[char][0], xpos, line_base, color, scalar, font_weight)
+            createchar(canvas, font_family[char][0], xpos, line_base, color, scalar, font_weight)
             xpos += font_family[char][1]['width']
 
         elif font_family.get('unknown'):
-            drawchar(canvas, font_family['unknown'][0], xpos, line_base, color, scalar, font_weight)
+            createchar(canvas, font_family['unknown'][0], xpos, line_base, color, scalar, font_weight)
             xpos += font_family['unknown'][1]['width']
-
         else:
             xpos += 30
 
