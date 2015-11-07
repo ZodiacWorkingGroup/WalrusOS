@@ -2,7 +2,6 @@ from WalText2.main import create_text
 from tkinter import *
 import codecs
 import json
-from string import digits, ascii_letters
 
 
 class CommandPrompt(Tk):
@@ -11,6 +10,8 @@ class CommandPrompt(Tk):
         for x in range(1):
             Grid.columnconfigure(self, x, weight=1)
             Grid.rowconfigure(self, x, weight=1)
+
+        self.cursorvisible = False
 
         self.c = Canvas(background='black')
         self.c.grid(row=0, column=0, sticky=N+E+S+W)
@@ -48,13 +49,18 @@ class CommandPrompt(Tk):
         self.update_view()
 
     def update_view(self):
+        self.cursorvisible = not self.cursorvisible
         self.c.delete(ALL)
         base = 60
 
         for line in self.text[:-1]:
             create_text(self.c, line, self.font, base, color='#00AA00', scalar=0.75)
             base += 40
-        create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75)
+
+        if self.cursorvisible:
+            create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=True)
+        else:
+            create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=False)
 
     def exec(self, com):
         pass
