@@ -1,5 +1,5 @@
 import json
-from WalText2.renderers import *
+import WalText2.renderers as rend
 from tkinter import BUTT, ROUND, PROJECTING
 import unicodedata  # For combining diacritic detection
 
@@ -41,19 +41,19 @@ def createchar(canvas, commands, x, y, color='black', scalar=1, font_weight=0):
                                     outline=color, fill=color)
 
         elif ins == 'circle':
-            draw_circle(canvas, x+args[0], y-args[1], args[2],
+            rend.draw_circle(canvas, x+args[0], y-args[1], args[2],
                         fill=color, scalar=scalar, width=size, cap=PROJECTING)
 
         elif ins == 'arc':
-            draw_arc(canvas, x+args[0], y-args[1], args[2], args[2], args[3], args[4], 0,
+            rend.draw_arc(canvas, x+args[0], y-args[1], args[2], args[2], args[3], args[4], 0,
                      fill=color, scalar=scalar, width=size, cap=PROJECTING)
 
         elif ins == 'ellipse':
-            draw_ellipse(canvas, x+args[0], y-args[1], args[2], args[3], args[4],
+            rend.draw_ellipse(canvas, x+args[0], y-args[1], args[2], args[3], args[4],
                          fill=color, scalar=scalar, width=size, cap=PROJECTING)
 
         elif ins == 'ellarc':
-            draw_arc(canvas, x+args[0], y-args[1], args[2], args[3], args[4], args[5], args[6],
+            rend.draw_arc(canvas, x+args[0], y-args[1], args[2], args[3], args[4], args[5], args[6],
                      fill=color, scalar=scalar, width=size, cap=PROJECTING)
 
         elif ins == 'size':

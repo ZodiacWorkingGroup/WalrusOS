@@ -1,4 +1,5 @@
-from WalText2.main import create_text
+from WalText2 import main as wt2
+from DefaultPrompt import *
 from tkinter import *
 import codecs
 import json
@@ -22,7 +23,7 @@ class CommandPrompt(Tk):
         self.bind('<Up>', self.up)
         self.bind('<Down>', self.down)
 
-        self.font = json.loads(codecs.open('../WalText2/standard_edit.fnt', 'r', 'utf-8').read())
+        self.font = json.loads(codecs.open('WalText2/standard_edit.fnt', 'r', 'utf-8').read())
 
     def up(self, event):
         self.texti -= 1
@@ -54,13 +55,13 @@ class CommandPrompt(Tk):
         base = 60
 
         for line in self.text[:-1]:
-            create_text(self.c, line, self.font, base, color='#00AA00', scalar=0.75)
+            wt2.create_text(self.c, line, self.font, base, color='#00AA00', scalar=0.75)
             base += 40
 
         if self.cursorvisible:
-            create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=True)
+            wt2.create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=True)
         else:
-            create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=False)
+            wt2.create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=False)
 
     def exec(self, com):
         pass

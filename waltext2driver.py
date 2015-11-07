@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter.filedialog import askopenfilename
 from tkinter import N, E, S, W, BOTH, ALL
 
-from WalText2 import main
+import WalText2.main as main
 
 import codecs
 import sys
@@ -21,7 +21,7 @@ class C(tk.Canvas):
     def draw(self, event=None):
         self.delete(ALL)
         font = open(self.fontfile).read()
-        text = [line.strip() for line in codecs.open('testtext.txt', 'r', 'utf-8').readlines()]
+        text = [line.strip() for line in codecs.open('WalText2/testtext.txt', 'r', 'utf-8').readlines()]
 
         baseline = 40
         for ln in text:
