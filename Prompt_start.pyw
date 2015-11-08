@@ -38,8 +38,7 @@ class CommandPrompt(Tk):
         self.update_view()
 
     def kp(self, event):
-        print(repr(event.char))
-        if event.char == '\r':
+        if event.char in ['\r', '\n']:
             self.text.append(self.exec(self.text[-1]))
             self.text.append('')
 
@@ -60,10 +59,7 @@ class CommandPrompt(Tk):
             wt2.create_text(self.c, line, self.font, base, color='#00AA00', scalar=0.75)
             base += 40
 
-        if self.cursorvisible:
-            wt2.create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=True)
-        else:
-            wt2.create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=False)
+        wt2.create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75)
 
     def exec(self, com):
         return self.executer.runline(com)

@@ -80,100 +80,100 @@ class Executer:
     def do_add(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b+a)
+        self.tp[self.tpi].appendleft(b+a)
 
     def do_sub(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b-a)
+        self.tp[self.tpi].appendleft(b-a)
 
     def do_mult(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b*a)
+        self.tp[self.tpi].appendleft(b*a)
 
     def do_div(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b/a)
+        self.tp[self.tpi].appendleft(b/a)
 
     def do_exp(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b**a)
+        self.tp[self.tpi].appendleft(b**a)
 
     def do_and(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b & a)
+        self.tp[self.tpi].appendleft(b & a)
 
     def do_or(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b | a)
+        self.tp[self.tpi].appendleft(b | a)
 
     def do_xor(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b ^ a)
+        self.tp[self.tpi].appendleft(b ^ a)
 
     def do_nand(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(~(b & a))
+        self.tp[self.tpi].appendleft(~(b & a))
 
     def do_nor(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(~(b | a))
+        self.tp[self.tpi].appendleft(~(b | a))
 
     def do_xnor(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(~(b ^ a))
+        self.tp[self.tpi].appendleft(~(b ^ a))
 
     def do_not(self, flags=[]):
-        self.tp[self.tpi].push(~self.tp[self.tpi].pop())
+        self.tp[self.tpi].appendleft(~self.tp[self.tpi].pop())
 
     def do_lshift(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b << a)
+        self.tp[self.tpi].appendleft(b << a)
 
     def do_rshift(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b >> a)
+        self.tp[self.tpi].appendleft(b >> a)
 
     def do_eq(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b == a)
+        self.tp[self.tpi].appendleft(b == a)
 
     def do_neq(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b != a)
+        self.tp[self.tpi].appendleft(b != a)
 
     def do_lt(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b < a)
+        self.tp[self.tpi].appendleft(b < a)
 
     def do_gt(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b > a)
+        self.tp[self.tpi].appendleft(b > a)
 
     def do_lte(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b <= a)
+        self.tp[self.tpi].appendleft(b <= a)
 
     def do_gte(self, flags=[]):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].push(b >= a)
+        self.tp[self.tpi].appendleft(b >= a)
 
 
     def evalcom(self, com):

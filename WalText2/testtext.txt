@@ -4,5 +4,6 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜẞæøå
 !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 ←↑→↓↔↕↖↗↘↙↚↛↜↝↞↟↠↡
 ■■■■■
-The quick brown fox jumps over the lazy dog.
-THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG!
+The quick brown fox jumped over the lazy dogs.
+THE QUICK BROWN FOX JUMPed OVER THE LAZY DOGS!
+DiD ThE QuIcK BrOwN FoX JuMp oVeR ThE LaZy dOgS?
