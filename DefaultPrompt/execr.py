@@ -192,6 +192,9 @@ class Executer:
     def do___printdeque(self, flags=None):
         return self.tp[self.tpi]
 
+    def do___printacc(self, flags=None):
+        return self.IA
+
     def evalcom(self, com):
         if self.strre.match(com):
             if self.IAdcurrent:

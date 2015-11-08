@@ -6,6 +6,16 @@ import codecs
 import json
 
 
+def flatten(l):
+    r = []
+    for sl in l:
+        if type(sl) == list:
+            r.extend(flatten(sl))
+        else:
+            r.append(sl)
+    return r
+
+
 class CommandPrompt(Tk):
     def __init__(self, filesys, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
@@ -28,6 +38,9 @@ class CommandPrompt(Tk):
 
         self.executer = execr.Executer()
 
+        self.base = 60
+        self.lines = [[[]]]  # The list to hold the created graphics
+
     def up(self, event):
         self.texti -= 1
         self.text[-1] = self.text[-self.texti]
@@ -40,26 +53,32 @@ class CommandPrompt(Tk):
 
     def kp(self, event):
         if event.char in ['\r', '\n']:
-            self.text.append(self.exec(self.text[-1]))
+            # This block is a mess. I'm so sorry.
+            output = self.exec(self.text[-1])
+            if output:
+                self.text.append(output)
+                self.lines.append([[]])
+                self.base += 60
+            self.update_view()
             self.text.append('')
+            self.base += 60
+            self.lines.append([[]])
+            self.update_view()
 
         elif event.char == '\x08':
             self.text[-1] = self.text[-1][:-1]
+            self.update_view()
 
         else:
             self.text[-1] += event.char
+            self.update_view()
 
-        self.update_view()
+    def update_view(self, value=1):
+        for ln in range(value+1)[1:]:
+            for x in flatten(self.lines[-ln][-1]):
+                self.c.delete(x)
 
-    def update_view(self):
-        self.c.delete(ALL)
-        base = 60
-
-        for line in self.text[:-1]:
-            wt2.create_text(self.c, line, self.font, base, color='#00AA00', scalar=0.75)
-            base += 40
-
-        wt2.create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75)
+            self.lines[-1][-1] = wt2.create_text(self.c, self.text[-1], self.font, self.base, color='#00FF00', scalar=0.75)
 
     def exec(self, com):
         return self.executer.runline(com, self.filesys)

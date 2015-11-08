@@ -25,6 +25,7 @@ def draw_arc(canvas, x, y, r1, r2, s, e, theta, res=1, scalar=1, **kwargs):  # T
 
     step = 0
     step2 = 1/res
+    r = []
     while step <= 6.28:
         if between(step, s, e):
             points[-1].append((getpoint((x, y), r1, r2, step, theta), getpoint((x, y), r1, r2, step2, theta)))
@@ -37,12 +38,14 @@ def draw_arc(canvas, x, y, r1, r2, s, e, theta, res=1, scalar=1, **kwargs):  # T
 
     for seg in points:
         for ln in seg:
-            canvas.create_line(ln[0]['x']*scalar, ln[0]['y']*scalar, ln[1]['x']*scalar, ln[1]['y']*scalar, **kwargs)
+            r.append(canvas.create_line(ln[0]['x']*scalar, ln[0]['y']*scalar, ln[1]['x']*scalar, ln[1]['y']*scalar, **kwargs))
+
+    return r  # So that I can delete specific lines
 
 
 def draw_ellipse(canvas, x, y, r1, r2, theta, res=1, scalar=1, **kwargs):
-    draw_arc(canvas, x, y, r1, r2, 0, 360, theta, res, scalar, **kwargs)
+    return draw_arc(canvas, x, y, r1, r2, 0, 360, theta, res, scalar, **kwargs)
 
 
 def draw_circle(canvas, x, y, r, res=1, scalar=1, **kwargs):
-    draw_ellipse(canvas, x, y, r, r, 0, res, scalar, **kwargs)
+    return draw_ellipse(canvas, x, y, r, r, 0, res, scalar, **kwargs)
