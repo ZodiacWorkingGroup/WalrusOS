@@ -31,11 +31,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Prompt_start.pyw" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Prompt_start.pyw">
+      <file leaf-file-name="execr.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DefaultPrompt/execr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28651685">
-              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.5303738">
+              <caret line="218" column="47" selection-start-line="218" selection-start-column="47" selection-end-line="218" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Prompt_start.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Prompt_start.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -66,11 +78,11 @@
         <option value="$PROJECT_DIR$/WalText2/main.py" />
         <option value="$PROJECT_DIR$/DefaultPrompt/utility.py" />
         <option value="$PROJECT_DIR$/DefaultPrompt/exec.py" />
-        <option value="$PROJECT_DIR$/DefaultPrompt/execr.py" />
-        <option value="$PROJECT_DIR$/Prompt_start.py" />
         <option value="$PROJECT_DIR$/waltext2driver.py" />
         <option value="$PROJECT_DIR$/Filesys/classes.py" />
         <option value="$PROJECT_DIR$/Prompt_start.pyw" />
+        <option value="$PROJECT_DIR$/Prompt_start.py" />
+        <option value="$PROJECT_DIR$/DefaultPrompt/execr.py" />
       </list>
     </option>
   </component>
@@ -520,16 +532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DefaultPrompt/execr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.470588">
-          <caret line="84" column="14" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WalText2/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.4705882">
@@ -564,6 +566,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Prompt_start.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Filesys/classes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -572,12 +584,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prompt_start.pyw">
+    <entry file="file://$PROJECT_DIR$/DefaultPrompt/execr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28651685">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.5303738">
+          <caret line="218" column="47" selection-start-line="218" selection-start-column="47" selection-end-line="218" selection-end-column="47" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

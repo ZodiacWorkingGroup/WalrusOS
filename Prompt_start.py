@@ -1,6 +1,6 @@
 from WalText2 import main as wt2
 from DefaultPrompt import execr
-from Filesys import classes
+from Filesys import classes as fs
 from tkinter import *
 import codecs
 import json
@@ -52,7 +52,6 @@ class CommandPrompt(Tk):
         self.update_view()
 
     def update_view(self):
-        self.cursorvisible = not self.cursorvisible
         self.c.delete(ALL)
         base = 60
 
@@ -63,9 +62,9 @@ class CommandPrompt(Tk):
         wt2.create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75)
 
     def exec(self, com):
-        return self.executer.runline(com)
+        return self.executer.runline(com, self.filesys)
 
 
-main = CommandPrompt()
+main = CommandPrompt(fs.Folder([]))
 main.wm_state('zoomed')
 main.mainloop()
