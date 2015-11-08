@@ -18,6 +18,29 @@ class File:
     def write_append(self, text):
         self.content += text
 
-    def _dump(self):
+    def dump(self):
         return json.dumps({'name': self.name,
                            'content': self.content})
+
+
+class Folder:
+    def __init__(self, children):
+        self.files = {}
+        self.children = children
+
+    def __getitem__(self, item):
+        return self.files[item]
+
+    def create_file(self, name):
+        self.files[name] = File(name, '')
+        return self.files[name]  # Return a reference to the file
+
+    def is_file(self, name):
+        return name in self.files
+
+    def dump(self):
+        dumpable = {}
+        for key in self.files:
+            self.dumpable[key] = self.files[key].dump()
+
+        return json.dumps(dumpable)

@@ -1,18 +1,19 @@
 from WalText2 import main as wt2
 from DefaultPrompt import execr
+from Filesys import classes
 from tkinter import *
 import codecs
 import json
 
 
 class CommandPrompt(Tk):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, filesys, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
         for x in range(1):
             Grid.columnconfigure(self, x, weight=1)
             Grid.rowconfigure(self, x, weight=1)
 
-        self.cursorvisible = False
+        self.filesys = filesys
 
         self.c = Canvas(background='black')
         self.c.grid(row=0, column=0, sticky=N+E+S+W)
