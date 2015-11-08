@@ -1,5 +1,5 @@
 from WalText2 import main as wt2
-from DefaultPrompt import *
+from DefaultPrompt import execr
 from tkinter import *
 import codecs
 import json
@@ -25,6 +25,8 @@ class CommandPrompt(Tk):
 
         self.font = json.loads(codecs.open('WalText2/standard_edit.fnt', 'r', 'utf-8').read())
 
+        self.executer = execr.Executer()
+
     def up(self, event):
         self.texti -= 1
         self.text[-1] = self.text[-self.texti]
@@ -38,7 +40,7 @@ class CommandPrompt(Tk):
     def kp(self, event):
         print(repr(event.char))
         if event.char == '\r':
-            self.exec(self.text[-1])
+            self.text.append(self.exec(self.text[-1]))
             self.text.append('')
 
         elif event.char == '\x08':
@@ -64,7 +66,7 @@ class CommandPrompt(Tk):
             wt2.create_text(self.c, self.text[-1], self.font, base, color='#00FF00', scalar=0.75, cursor=False)
 
     def exec(self, com):
-        pass
+        return self.executer.runline(com)
 
 
 main = CommandPrompt()
