@@ -23,10 +23,10 @@ class Executer:
         self.boolre = re.compile(r'^(True|False)$')
 
     def do_inject(self, flags=None):
-        self.tp[self.tpi].append(self.IA[self.IAd])
+        self.tp[self.tpi].appendleft(self.IA[self.IAd])
 
     def do_push(self, flags=None):
-        self.tp[self.tpi].appendleft(self.IA[self.IAd])
+        self.tp[self.tpi].append(self.IA[self.IAd])
 
     def do_eject(self, flags=None):
         self.IA[self.IAd] = self.tp[self.tpi].popleft()
@@ -94,100 +94,105 @@ class Executer:
     def do_add(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b+a)
+        self.tp[self.tpi].append(b+a)
 
     def do_sub(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b-a)
+        self.tp[self.tpi].append(b-a)
 
     def do_mult(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b*a)
+        self.tp[self.tpi].append(b*a)
 
     def do_div(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b/a)
+        self.tp[self.tpi].append(b/a)
+
+    def do_mod(self, flags=None):
+        a = self.tp[self.tpi].pop()
+        b = self.tp[self.tpi].pop()
+        self.tp[self.tpi].append(b%a)
 
     def do_exp(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b**a)
+        self.tp[self.tpi].append(b**a)
 
     def do_and(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b & a)
+        self.tp[self.tpi].append(b & a)
 
     def do_or(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b | a)
+        self.tp[self.tpi].append(b | a)
 
     def do_xor(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b ^ a)
+        self.tp[self.tpi].append(b ^ a)
 
     def do_nand(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(~(b & a))
+        self.tp[self.tpi].append(~(b & a))
 
     def do_nor(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(~(b | a))
+        self.tp[self.tpi].append(~(b | a))
 
     def do_xnor(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(~(b ^ a))
+        self.tp[self.tpi].append(~(b ^ a))
 
     def do_not(self, flags=None):
-        self.tp[self.tpi].appendleft(~self.tp[self.tpi].pop())
+        self.tp[self.tpi].append(~self.tp[self.tpi].pop())
 
     def do_lshift(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b << a)
+        self.tp[self.tpi].append(b << a)
 
     def do_rshift(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b >> a)
+        self.tp[self.tpi].append(b >> a)
 
     def do_eq(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b == a)
+        self.tp[self.tpi].append(b == a)
 
     def do_neq(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b != a)
+        self.tp[self.tpi].append(b != a)
 
     def do_lt(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b < a)
+        self.tp[self.tpi].append(b < a)
 
     def do_gt(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b > a)
+        self.tp[self.tpi].append(b > a)
 
     def do_lte(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b <= a)
+        self.tp[self.tpi].append(b <= a)
 
     def do_gte(self, flags=None):
         a = self.tp[self.tpi].pop()
         b = self.tp[self.tpi].pop()
-        self.tp[self.tpi].appendleft(b >= a)
+        self.tp[self.tpi].append(b >= a)
 
     def do___printdeque(self, flags=None):
         return self.tp[self.tpi]
@@ -220,6 +225,9 @@ class Executer:
         elif self.filesys.is_file(com.lower()):
             for line in self.filesys[com.lower()].read().split('\n'):
                 self.runline(line, self.filesys)
+
+        else:
+            print('Unknown command: '+com.lower())
 
     def runline(self, line, filesys):
         self.filesys = filesys
