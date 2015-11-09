@@ -38,7 +38,8 @@ def draw_arc(canvas, x, y, r1, r2, s, e, theta, res=1, scalar=1, **kwargs):  # T
 
     for seg in points:
         for ln in seg:
-            r.append(canvas.create_line(ln[0]['x']*scalar, ln[0]['y']*scalar, ln[1]['x']*scalar, ln[1]['y']*scalar, **kwargs))
+            r.append(canvas.create_line(ln[0]['x']*scalar, ln[0]['y']*scalar, ln[1]['x']*scalar, ln[1]['y']*scalar,
+                                        **kwargs))
 
     return r  # So that I can delete specific lines
 

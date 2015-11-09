@@ -24,9 +24,8 @@ class File:
 
 
 class Folder:
-    def __init__(self, children):
+    def __init__(self):
         self.files = {}
-        self.children = children
 
     def __getitem__(self, item):
         return self.files[item]
@@ -41,6 +40,11 @@ class Folder:
     def dump(self):
         dumpable = {}
         for key in self.files:
-            self.dumpable[key] = self.files[key].dump()
+            dumpable[key] = self.files[key].dump()
 
         return json.dumps(dumpable)
+
+    def load(self, string):
+        files = json.loads(string)
+        for f in files:
+            self.files[f] = File(files[f]['name'], files[f]['content'])

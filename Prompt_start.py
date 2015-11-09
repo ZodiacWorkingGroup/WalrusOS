@@ -84,6 +84,9 @@ class CommandPrompt(Tk):
         return self.executer.runline(com, self.filesys)
 
 
-main = CommandPrompt(fs.Folder([]))
-main.wm_state('zoomed')
-main.mainloop()
+if __name__ == '__main__':
+    filesys = fs.Folder()
+    filesys.load(open('DefaultPrompt/DefaultSys.fsys').read())
+    main = CommandPrompt(filesys)
+    main.wm_state('zoomed')
+    main.mainloop()
