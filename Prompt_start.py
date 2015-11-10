@@ -25,10 +25,24 @@ class CommandPrompt(Tk):
 
         self.filesys = filesys
 
-        self.c = Canvas(background='black')
-        self.c.grid(row=0, column=0, sticky=N+E+S+W)
+        self.cf = Frame(self, width=300, height=300)
+        self.cf.grid(row=0, column=0, sticky=N+E+S+W)
+
+        self.update()
+
+        self.c = Canvas(self.cf, background='black', width=300,height=300, scrollregion=self.cf.bbox(ALL))
         self.text = ['']
         self.texti = 1
+
+        self.scroller = Scrollbar(self.cf, orient=VERTICAL)
+
+        self.scroller.pack(side=RIGHT, fill=Y)
+
+        self.scroller.config(command=self.c.yview)
+        self.c.config(width=300, height=300)
+        self.c.config(yscrollcommand=self.scroller.set)
+
+        self.c.pack(side=LEFT, expand=True, fill=BOTH)
 
         self.bind('<Key>', self.kp)
         self.bind('<Up>', self.up)
@@ -52,6 +66,7 @@ class CommandPrompt(Tk):
         self.update_view()
 
     def kp(self, event):
+        print(repr(event.char))
         if event.char in ['\r', '\n']:
             # This block is a mess. I'm so sorry.
             output = self.exec(self.text[-1])

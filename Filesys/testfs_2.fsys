@@ -1,0 +1,9 @@
+{
+    "structure": {},
+    "data": {
+        "testfile": {
+            "name": "testfile",
+            "content": "This file is a test!"
+        }
+    }
+}
