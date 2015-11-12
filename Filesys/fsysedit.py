@@ -44,6 +44,15 @@ class Editor(Tk):
 
         self.bind('<Control-s>', self.save)
 
+        self.mb = Menu()
+        self.fm = Menu()
+        self.fm.add_command(label='Save', accelerator='Ctrl+S', command=self.save)
+        self.mb.add_cascade(menu=self.fm, label='Savefile')
+        self.dm = Menu()
+        self.dm.add_command(label='New file', command=self.newfile)
+        self.mb.add_cascade(menu=self.dm, label='Files')
+        self.config(menu=self.mb)
+
     def loadf(self, event=None):
         self.st.delete(1.0, END)
         self.namee.delete(1, END)
@@ -69,14 +78,17 @@ class Editor(Tk):
 
     def save(self, event=None):
         self.update_fs()
-        open(self.fname, 'w').write(self.data.dump())
+        open(self.fname, 'w').write(json.dumps(self.data.dump()))
 
     def update_fs(self, event=None):
         self.data[self.opened].write(self.st.get(1.0, END))
         self.data[self.opened].rename(self.namee.get())
 
     def newfile(self, event=None):
-        self.data[self.opened] = classes.File(self.st.get(1.0, END), self.namee.get())
+        name = input('Filename: ')
+        self.opened = name
+        self.data.create_file(name)
+        self.updatetree()
 
 
 main = Editor(input('Filename: '))

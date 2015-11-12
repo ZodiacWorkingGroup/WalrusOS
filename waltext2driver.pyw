@@ -15,13 +15,14 @@ class C(tk.Canvas):
         tk.Canvas.__init__(self, *args, **kwargs)
         self.config(background="#AAAAAA", width=w, height=h)
         self.fontfile = askopenfilename(title='Select a font file')
+        self.testfile = askopenfilename(title='Select a test file')
         self.bind('<Button-1>', self.draw)
         self.draw()
 
     def draw(self, event=None):
         self.delete(ALL)
         font = open(self.fontfile).read()
-        text = [line.strip() for line in codecs.open('WalText2/testtext.txt', 'r', 'utf-8').readlines()]
+        text = [line.strip() for line in codecs.open(self.testfile, 'r', 'utf-8').readlines()]
 
         baseline = 40
         for ln in text:

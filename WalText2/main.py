@@ -85,7 +85,7 @@ def create_text(canvas, text, font_family, line_base, color='black', charsep=10,
                 xpos += font_family['unknown'][1]['width']
                 lasttop = font_family['unknown'][1].get('top', 0)
             else:
-                r.append(createchar(canvas, ['line 0 0 14 0', 'line 0 14 14 14', 'line 0 0 0 14', 'line 14 0 14 14']))
+                r.append(createchar(canvas, ['line 0 0 14 0', 'line 0 14 14 14', 'line 0 0 0 14', 'line 14 0 14 14'], xpos, line_base, color, scalar, font_weight))
                 xpos += 14
                 lasttop = 14
 
