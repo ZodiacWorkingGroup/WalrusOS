@@ -484,7 +484,11 @@ class Executer:
         pass
 
     def com_69_p0(self):  # i
-        pass
+        if len(self.stack) < 1 and not self.safe:
+            return -1
+        else:
+            self.push(self.pop())
+            return 0
 
     def com_6a_p0(self):  # j
         pass
@@ -553,7 +557,8 @@ class Executer:
         pass
 
     def com_7e_p0(self):  # ~
-        pass
+        self.safe = not self.safe
+        return 0
 
     def evalcom(self, char):
         mode = self.mode[-1]
