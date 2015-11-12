@@ -55,7 +55,7 @@ class Editor(Tk):
 
     def loadf(self, event=None):
         self.st.delete(1.0, END)
-        self.namee.delete(1, END)
+        self.namee.delete(0, END)
 
         if self.data[self.opened]:
             self.st.insert(1.0, self.data[self.opened].content)

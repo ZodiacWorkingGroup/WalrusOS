@@ -21,10 +21,13 @@ class Executer:
         self.globals = {}
         self.globalstrs = {}
         self.funcs = {}
+        self.files = {}
 
         self.stack = self.tape[0]
 
         self.block = []
+
+        self.cwd = '!'
 
     def update(self):
         if self.ti in self.tape:
@@ -70,13 +73,20 @@ class Executer:
         return 0
 
     def com_23_p0(self):  # #
-        pass
+        if len(self.stack) == 0 and not self.safe:
+            return -1
+        else:
+            v = self.pop()
+            func = self.popnts()
+            self.funcs[v] = func
+            return 0
 
     def com_24_p0(self):  # $
-        if len(self.stack) > 0:
-            self.pop()
-        else:
+        if len(self.stack) == 0:
             return -1
+        else:
+            self.pop()
+            return 0
 
     def com_25_p0(self):  # %
         if len(self.stack) < 2 and not self.safe:
@@ -469,16 +479,29 @@ class Executer:
         pass
 
     def com_64_p0(self):  # d
-        pass
+        self.cwd = self.popnts()
 
     def com_65_p0(self):  # e
         pass
 
     def com_66_p0(self):  # f
-        pass
+        if len(self.stack) < 2 and not self.safe:
+            return -1
+        else:
+            tofind = self.pop()
+            while len(self.stack) > 0:
+                if self.pop() == tofind:
+                    self.push(tofind)
+                    return 0
+            return -1
 
     def com_67_p0(self):  # g
-        pass
+        str = self.popnts()
+        if str in self.globals:
+            self.push(self.globals[str])
+            return 0
+        else:
+            return -1
 
     def com_68_p0(self):  # h
         pass
@@ -491,13 +514,19 @@ class Executer:
             return 0
 
     def com_6a_p0(self):  # j
-        pass
+        s = self.popnts()
+        if s in self.labels:
+            self.reexecutefrom(self.labels[s])
+            return 0
+        else:
+            return -9
 
     def com_6b_p0(self):  # k
         pass
 
     def com_6c_p0(self):  # l
-        pass
+        s = self.popnts()
+        self.labels[s] = len(self.rawcoms) - 1
 
     def com_6d_p0(self):  # m
         pass
@@ -506,7 +535,12 @@ class Executer:
         pass
 
     def com_6f_p0(self):  # o
-        pass
+        if len(self.stack) == 0 and not self.safe:
+            return -1
+        else:
+            id = self.pop()
+            fname = self.popnts()
+            self.files[id] = self.cwd+fname
 
     def com_70_p0(self):  # p
         pass
