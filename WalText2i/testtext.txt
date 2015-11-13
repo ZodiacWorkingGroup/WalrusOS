@@ -3,6 +3,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜẞæøå
 0123456789
 !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 ←↑→↓↔↕↖↗↘↙↚↛↜↝↞↟↠↡
+■■■■■
 The quick brown fox jumped over the lazy dogs.
 I DEMAND THAT THE QUICK BROWN FOX JUMP OVER THE LAZY DOGS!
 DiD ThE QuIcK BrOwN FoX JuMp oVeR ThE LaZy dOgS?
