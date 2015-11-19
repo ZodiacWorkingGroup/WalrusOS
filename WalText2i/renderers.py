@@ -49,4 +49,26 @@ def draw_ellipse(canvas, x, y, r1, r2, theta, res=1, scalar=1, **kwargs):
 
 
 def draw_circle(canvas, x, y, r, res=1, scalar=1, **kwargs):
+    print('x='+str(x))
+    print('y='+str(y))
+    print('r='+str(r))
     return draw_ellipse(canvas, x, y, r, r, 0, res, scalar, **kwargs)
+
+
+def draw_parabarc(canvas, x, y, a, b, c, start, end, theta=0, res=1, scalar=1, **kwargs):
+    points = []
+    res *= 20
+    step = start
+    step2 = start+1/res
+    while step < end:
+        points.append(((x + step, y - a*(step**2) + b*step + c), (x + step2, y - a*step2**2 + b*step2 + c)))
+        step = step2
+        step2 += 1/res
+
+    r = []
+
+    for ln in points:
+        r.append(canvas.create_line(ln[0][0]*scalar, ln[0][1]*scalar, ln[1][0]*scalar, ln[1][1]*scalar,
+                                    **kwargs))
+
+    return r

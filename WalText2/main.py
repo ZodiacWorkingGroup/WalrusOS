@@ -66,6 +66,8 @@ def createchar(canvas, commands, x, y, color='black', scalar=1, font_weight=0):
 def create_text(canvas, text, font_family, line_base, color='black', charsep=10, scalar=1, font_weight=0, cursor=False):
     xpos = 20
     r = []
+    lastleft = xpos
+    lasttop = line_base
     for char in text:
         global size
         size = 1+font_weight

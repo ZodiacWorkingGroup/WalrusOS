@@ -62,8 +62,8 @@ class Main(Tk):
 
     def updatechar(self):
         self.font[self.curchar] = [[ln for ln in self.st.get(1.0, END).split('\n') if ln],
-                                   {'width': int(self.widthe.get()),
-                                    'top': int(self.tope.get())
+                                   {'width': self.widthe.get(),
+                                    'top': self.tope.get()
                                     }]
 
     def switchchar(self):
